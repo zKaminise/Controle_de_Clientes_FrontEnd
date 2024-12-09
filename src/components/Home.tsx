@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Navbar, Nav, Container, Form, Button, Table } from "react-bootstrap";
+import { Container, Form, Button, Table } from "react-bootstrap";
+import Header from "./Header";
 import api from "../services/api";
 import ModalClienteInfo from "./ModalClienteInfo";
 import ModalCadastroCliente from "./ModalCadastroCliente";
 import { Client } from "../interfaces/Client";
 import { FaTrash } from "react-icons/fa";
-import { Link } from 'react-router-dom';
 
 const Home: React.FC = () => {
   const [clients, setClients] = useState<Client[]>([]);
@@ -108,38 +108,22 @@ const Home: React.FC = () => {
 
   return (
     <>
-      <Navbar bg="dark" variant="dark" expand="lg">
-        <Container>
-          <Navbar.Brand href="#home">Client Manager</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link as={Link} to="/financeiro">
-                Financeiro
-              </Nav.Link>
-            </Nav>
-            <Form className="d-flex">
-              <Form.Control
-                type="search"
-                placeholder="Pesquisar"
-                className="me-2"
-                aria-label="Search"
-                value={search}
-                onChange={handleSearch}
-              />
-              <Button variant="outline-success">Buscar</Button>
-            </Form>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+      <Header currentPage="home" />
       <Container className="mt-4">
-        <Button
-          variant="primary"
-          className="mb-4"
-          onClick={handleClientCadastro}
-        >
-          Cadastrar Cliente
-        </Button>
+        <div className="d-flex justify-content-between align-items-center mb-3">
+          <Button variant="primary" onClick={handleClientCadastro}>
+            Cadastrar Cliente
+          </Button>
+          <Form.Group controlId="searchBar" className="mb-0">
+            <Form.Control
+              type="text"
+              placeholder="Pesquisar Cliente pelo Nome"
+              value={search}
+              onChange={handleSearch}
+              style={{ width: "300px" }}
+            />
+          </Form.Group>
+        </div>
         <Table striped bordered hover>
           <thead>
             <tr>
