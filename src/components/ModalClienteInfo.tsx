@@ -29,6 +29,24 @@ const ModalClienteInfo: React.FC<ModalClienteInfoProps> = ({
     });
   }, [client]);
 
+  // useEffect(() => {
+  //   setUpdatedClient({
+  //     ...client,
+  //     dataInicioTratamento: client.dataInicioTratamento.includes("/")
+  //       ? client.dataInicioTratamento.split("/").reverse().join("-")
+  //       : client.dataInicioTratamento,
+  //   });
+  // }, [client]);
+
+  // useEffect(() => {
+  //   setUpdatedClient({
+  //     ...client,
+  //     dataFimTratamento: client.dataFimTratamento.includes("/")
+  //       ? client.dataFimTratamento.split("/").reverse().join("-")
+  //       : client.dataFimTratamento,
+  //   });
+  // }, [client]);
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
@@ -163,6 +181,15 @@ const ModalClienteInfo: React.FC<ModalClienteInfoProps> = ({
             />
           </Form.Group>
           <Form.Group className="mb-3">
+            <Form.Label>Tratamento</Form.Label>
+            <Form.Control
+              type="text"
+              name="tratamento"
+              value={updatedClient.tratamento || ""}
+              onChange={handleChange}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3">
             <Form.Label>Medicamentos</Form.Label>
             <Form.Control
               type="text"
@@ -181,15 +208,42 @@ const ModalClienteInfo: React.FC<ModalClienteInfoProps> = ({
             />
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Label>Recebeu Alta</Form.Label>
+            <Form.Label>Frequencia</Form.Label>
+            <Form.Control
+              type="text"
+              name="frequencia"
+              value={updatedClient.frequencia || ""}
+              onChange={handleChange}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Escolaridade</Form.Label>
             <Form.Select
-              name="recebeuAltaEnum"
-              value={updatedClient.recebeuAltaEnum || ""}
+              name="escolaridadeEnum"
+              value={updatedClient.escolaridadeEnum || ""}
               onChange={handleChange}
             >
-              <option value="SIM">Sim</option>
-              <option value="NAO">Não</option>
+              <option value="ensinoSuperior">Ensino Superior</option>
+              <option value="ensinoMedio">Ensino Médio</option>
             </Form.Select>
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Data Inicio do Tratamento</Form.Label>
+            <Form.Control
+              type="date"
+              name="dataInicioTramento"
+              value={updatedClient.dataInicioTratamento || ""}
+              onChange={handleChange}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Data Final do Tratamento</Form.Label>
+            <Form.Control
+              type="date"
+              name="dataFimTratamento"
+              value={updatedClient.dataFimTratamento || ""}
+              onChange={handleChange}
+            />
           </Form.Group>
         </Form>
       </Modal.Body>

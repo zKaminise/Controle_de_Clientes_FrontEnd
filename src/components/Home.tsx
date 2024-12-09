@@ -131,7 +131,8 @@ const Home: React.FC = () => {
               <th>CPF</th>
               <th>Email</th>
               <th>Data de Nascimento</th>
-              <th>Recebeu Alta</th>
+              <th>Data de Inicio do Tratamento</th>
+              <th>Data de Fim do Tratamento</th>
               <th>Ações</th>
             </tr>
           </thead>
@@ -148,7 +149,8 @@ const Home: React.FC = () => {
                 <td>{client.cpf}</td>
                 <td>{client.email}</td>
                 <td>{client.dataNascimento}</td>
-                <td>{client.recebeuAltaEnum === "SIM" ? "Sim" : "Não"}</td>
+                <td>{client.dataInicioTratamento}</td>
+                <td>{client.dataFimTratamento}</td>
                 <td>
                   <Button
                     variant="danger"
