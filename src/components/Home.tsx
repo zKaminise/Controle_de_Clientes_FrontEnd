@@ -5,6 +5,7 @@ import ModalClienteInfo from "./ModalClienteInfo";
 import ModalCadastroCliente from "./ModalCadastroCliente";
 import { Client } from "../interfaces/Client";
 import { FaTrash } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 const Home: React.FC = () => {
   const [clients, setClients] = useState<Client[]>([]);
@@ -113,7 +114,9 @@ const Home: React.FC = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#financeiro">Financeiro</Nav.Link>
+              <Nav.Link as={Link} to="/financeiro">
+                Financeiro
+              </Nav.Link>
             </Nav>
             <Form className="d-flex">
               <Form.Control
