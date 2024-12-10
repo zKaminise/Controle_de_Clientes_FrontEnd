@@ -12,6 +12,7 @@ interface ModalPagamentoProps {
 const ModalPagamento: React.FC<ModalPagamentoProps> = ({ show, handleClose, clientCpf }) => {
     const [valorPago, setValorPago] = useState('');
     const [dataPagamento, setDataPagamento] = useState('');
+    const [referencia, setReferencia] = useState('');
     const [metodoPagamento, setMetodoPagamento] = useState('');
 
     const handleSave = async () => {
@@ -20,6 +21,7 @@ const ModalPagamento: React.FC<ModalPagamentoProps> = ({ show, handleClose, clie
                 cpf: clientCpf,
                 valorPago,
                 diaDoPagamento: dataPagamento,
+                referencia,
                 metodoPagamentoEnum: metodoPagamento,
             });
             alert('Pagamento cadastrado com sucesso!');
@@ -58,6 +60,15 @@ const ModalPagamento: React.FC<ModalPagamentoProps> = ({ show, handleClose, clie
                         />
                     </Form.Group>
                     <Form.Group className="mb-3">
+                        <Form.Label>Mês de Referência</Form.Label>
+                        <Form.Control
+                            type="text"
+                            placeholder="Digite a qual/quais meses esse pagamento é referente"
+                            value={referencia}
+                            onChange={(e) => setReferencia(e.target.value)}
+                        />
+                    </Form.Group>
+                    <Form.Group className="mb-3">
                         <Form.Label>Método de Pagamento</Form.Label>
                         <Form.Control
                             as="select"
@@ -67,6 +78,8 @@ const ModalPagamento: React.FC<ModalPagamentoProps> = ({ show, handleClose, clie
                             <option value="PIX">PIX</option>
                             <option value="CARTAO">Cartão</option>
                             <option value="DINHEIRO">Dinheiro</option>
+                            <option value="BOLETO">Boleto</option>
+                            <option value="OUTRO">Outro</option>
                         </Form.Control>
                     </Form.Group>
                 </Form>

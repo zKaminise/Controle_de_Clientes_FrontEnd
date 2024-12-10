@@ -12,6 +12,7 @@ interface Payment {
     id: number;
     valorPago: string;
     diaDoPagamento: string;
+    referencia: string;
     metodoPagamentoEnum: string;
 }
 
@@ -29,6 +30,7 @@ const Financeiro: React.FC = () => {
     const [paymentData, setPaymentData] = useState({
         valorPago: '',
         diaDoPagamento: '',
+        referencia: '',
         metodoPagamentoEnum: 'PIX',
     });
 
@@ -93,6 +95,7 @@ const Financeiro: React.FC = () => {
             setPaymentData({
                 valorPago: '',
                 diaDoPagamento: '',
+                referencia: '',
                 metodoPagamentoEnum: 'PIX',
             });
         } catch (error) {
@@ -103,10 +106,13 @@ const Financeiro: React.FC = () => {
 
     const handleReceiptSubmit = async () => {
         try {
-            await api.get(
-                `/financeiro/receipt/${selectedClient?.cpf}/${month}/${year}`
-            );
+            const response = await api.get(`/financeiro/receipt/${selectedClient?.cpf}/${month}/${year}`, {
+                responseType: 'blob', // Indica que a resposta é um arquivo
+            });
+    
+            const fileURL = URL.createObjectURL(new Blob([response.data], { type: 'application/pdf' }));
             alert('Recibo gerado com sucesso!');
+            window.open(fileURL, '_blank'); // Abre o PDF em uma nova aba
             setShowReceiptModal(false);
             setMonth('');
             setYear('');
@@ -118,10 +124,14 @@ const Financeiro: React.FC = () => {
 
     const handleGenerateReport = async () => {
         try {
-            await api.get(`/financeiro/report`, {
+            const response = await api.get('/financeiro/report', {
                 params: { startDate, endDate },
+                responseType: 'blob', // Indica que a resposta é um arquivo
             });
+    
+            const fileURL = URL.createObjectURL(new Blob([response.data], { type: 'application/pdf' }));
             alert('Relatório gerado com sucesso!');
+            window.open(fileURL, '_blank'); // Abre o PDF em uma nova aba
             setShowReportModal(false);
             setStartDate('');
             setEndDate('');
@@ -130,6 +140,7 @@ const Financeiro: React.FC = () => {
             alert('Erro ao gerar relatório. Verifique as datas.');
         }
     };
+    
 
     return (
         <>
@@ -202,6 +213,7 @@ const Financeiro: React.FC = () => {
                                 <tr>
                                     <th>Valor Pago</th>
                                     <th>Data do Pagamento</th>
+                                    <th>Mês de Referência</th>
                                     <th>Método de Pagamento</th>
                                 </tr>
                             </thead>
@@ -210,6 +222,7 @@ const Financeiro: React.FC = () => {
                                     <tr key={payment.id}>
                                         <td>R$ {payment.valorPago}</td>
                                         <td>{payment.diaDoPagamento}</td>
+                                        <td>{payment.referencia}</td>
                                         <td>{payment.metodoPagamentoEnum}</td>
                                     </tr>
                                 ))}
@@ -252,6 +265,19 @@ const Financeiro: React.FC = () => {
                                         setPaymentData((prev) => ({
                                             ...prev,
                                             diaDoPagamento: e.target.value,
+                                        }))
+                                    }
+                                />
+                            </Form.Group>
+                            <Form.Group className="mb-3">
+                                <Form.Label>Mês de Referencia</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    value={paymentData.referencia}
+                                    onChange={(e) =>
+                                        setPaymentData((prev) => ({
+                                            ...prev,
+                                            referencia: e.target.value,
                                         }))
                                     }
                                 />
