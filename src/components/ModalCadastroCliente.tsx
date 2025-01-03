@@ -21,9 +21,10 @@ const ModalCadastroCliente: React.FC<ModalCadastroClienteProps> = ({
   const [endereco, setEndereco] = useState("");
   const [dataNascimento, setDataNascimento] = useState("");
   const [generoEnum, setGeneroEnum] = useState<
-    "MASCULINO" | "FEMININO" | "OUTRO"
-  >("MASCULINO");
+    "MASCULINO" | "FEMININO" | "OUTRO" | ""
+  >("");
   const [estadosEnum, setEstadosEnum] = useState<
+    | ""
     | "AC"
     | "AL"
     | "AM"
@@ -51,15 +52,17 @@ const ModalCadastroCliente: React.FC<ModalCadastroClienteProps> = ({
     | "SE"
     | "SP"
     | "TO"
-  >("MG");
+  >("");
   const [religiao, setReligiao] = useState("");
   const [tratamento, setTratamento] = useState("");
   const [medicamentos, setMedicamentos] = useState("");
   const [queixaPrincipal, setQueixaPrincipal] = useState("");
   const [frequencia, setFrequencia] = useState("");
   const [escolaridadeEnum, setEscolaridadeEnum] = useState<
-    "ensinoSuperior" | "ensinoMedio"
-  >("ensinoSuperior");
+    "" | "ensinoFundamentalIncompleto" | "ensinoFundamentalCompleto" | "ensinoMedioIncompleto" | "ensinoMedioCompleto" | "ensinoSuperiorIncompleto" | 
+    "ensinoSuperiorCompleto" | "posGraduacaoIncompleta" | "posGraduacaoCompleta" | "mestradoIncompleto" | "mestradoCompleto" | "doutoradoIncompleto" | "doutoradoCompleto" |
+    "posDoutoradoIncompleto" | "posDoutoradoCompleto"
+  >(""); 
   const [dataInicioTratamento, setDataInicioTratamento] = useState("");
   const [dataFimTratamento, setDataFimTratamento] = useState("");
 
@@ -170,6 +173,7 @@ const ModalCadastroCliente: React.FC<ModalCadastroClienteProps> = ({
                 )
               }
             >
+              <option value="">Selecione</option>
               <option value="MASCULINO">Masculino</option>
               <option value="FEMININO">Feminino</option>
               <option value="OUTRO">Outro</option>
@@ -183,6 +187,7 @@ const ModalCadastroCliente: React.FC<ModalCadastroClienteProps> = ({
                 setEstadosEnum(e.target.value as typeof estadosEnum)
               }
             >
+              <option value="">Selecione</option>
               <option value="AC">AC</option>
               <option value="AL">AL</option>
               <option value="AM">AM</option>
@@ -263,12 +268,27 @@ const ModalCadastroCliente: React.FC<ModalCadastroClienteProps> = ({
               value={escolaridadeEnum}
               onChange={(e) =>
                 setEscolaridadeEnum(
-                  e.target.value as "ensinoSuperior" | "ensinoMedio"
+                  e.target.value as "ensinoFundamentalIncompleto" | "ensinoFundamentalCompleto" | "ensinoMedioIncompleto" | "ensinoMedioCompleto" | "ensinoSuperiorIncompleto" | 
+                  "ensinoSuperiorCompleto" | "posGraduacaoIncompleta" | "posGraduacaoCompleta" | "mestradoIncompleto" | "mestradoCompleto" | "doutoradoIncompleto" | "doutoradoCompleto" |
+                  "posDoutoradoIncompleto" | "posDoutoradoCompleto"
                 )
               }
             >
-              <option value="ensinoSuperior">Ensino Superior</option>
-              <option value="ensinoMedio">Ensino Médio</option>
+              <option value="">Selecione</option>
+              <option value="ensinoFundamentalIncompleto">Ensino Fundamental Incompleto</option>
+              <option value="ensinoFundamentalCompleto">Ensino Fundamental Completo</option>
+              <option value="ensinoMedioIncompleto">Ensino Médio Incompleto</option>
+              <option value="ensinoMedioCompleto">Ensino Médio Completo</option>
+              <option value="ensinoSuperiorIncompleto">Ensino Superior Incompleto</option>
+              <option value="ensinoSuperiorCompleto">Ensino Superior Completo</option>
+              <option value="posGraduacaoIncompleta">Pós Graduação Incompleta</option>
+              <option value="posGraduacaoCompleta">Pós Graduação Completa</option>
+              <option value="mestradoIncompleto">Mestrado Incompleto</option>
+              <option value="mestradoCompleto">Mestrado Completo</option>
+              <option value="doutoradoIncompleto">Doutorado Incompleto</option>
+              <option value="doutoradoCompleto">Doutorado Completo</option>
+              <option value="posDoutoradoIncompleto">Pós Doutorado Incompleto</option>
+              <option value="posDoutoradoCompleto">Pós Doutorado Completo</option>
             </Form.Select>
           </Form.Group>
           <Form.Group className="mb-3">

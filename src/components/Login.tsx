@@ -49,7 +49,6 @@ const Login: React.FC = () => {
                     </Form.Group>
                     <Button variant="primary" className="w-100 mb-2" onClick={handleLogin}>Entrar</Button>
                     <Button variant="secondary" className="w-100 mb-2" onClick={() => navigate('/register')}>Cadastrar-se</Button>
-                    <Button variant="link" className="w-100" onClick={() => navigate('/forgot-password')}>Esqueci a senha</Button>
                 </Form>
             </div>
         </Container>

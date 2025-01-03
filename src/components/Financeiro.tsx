@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Container, Button, Table, Modal, Form } from "react-bootstrap";
 import Header from "./Header";
 import api from "../services/api";
+import { FaEdit, FaTrash } from "react-icons/fa";
 
 interface Client {
   nome: string;
@@ -32,7 +33,7 @@ const Financeiro: React.FC = () => {
     valorPago: "",
     diaDoPagamento: "",
     referencia: "",
-    metodoPagamentoEnum: "PIX",
+    metodoPagamentoEnum: "",
   });
 
   const [search, setSearch] = useState("");
@@ -334,14 +335,14 @@ const Financeiro: React.FC = () => {
                         className="me-2"
                         onClick={() => handleEditPayment(payment)}
                       >
-                        <i className="fas fa-edit"></i>
+                        <FaEdit />
                       </Button>
                       {/* Botão de Deletar */}
                       <Button
                         variant="danger"
                         onClick={() => handleDeletePayment(payment.id)}
                       >
-                        <i className="fas fa-trash"></i>
+                        <FaTrash />
                       </Button>
                     </td>
                   </tr>
@@ -423,6 +424,7 @@ const Financeiro: React.FC = () => {
                     }))
                   }
                 >
+                  <option value="">Selecione</option>
                   <option value="PIX">PIX</option>
                   <option value="CARTAO">Cartão</option>
                   <option value="DINHEIRO">Dinheiro</option>

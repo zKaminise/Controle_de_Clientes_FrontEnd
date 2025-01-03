@@ -223,8 +223,20 @@ const ModalClienteInfo: React.FC<ModalClienteInfoProps> = ({
               value={updatedClient.escolaridadeEnum || ""}
               onChange={handleChange}
             >
-              <option value="ensinoSuperior">Ensino Superior</option>
-              <option value="ensinoMedio">Ensino Médio</option>
+              <option value="ensinoFundamentalIncompleto">Ensino Fundamental Incompleto</option>
+              <option value="ensinoFundamentalCompleto">Ensino Fundamental Completo</option>
+              <option value="ensinoMedioIncompleto">Ensino Médio Incompleto</option>
+              <option value="ensinoMedioCompleto">Ensino Médio Completo</option>
+              <option value="ensinoSuperiorIncompleto">Ensino Superior Incompleto</option>
+              <option value="ensinoSuperiorCompleto">Ensino Superior Completo</option>
+              <option value="posGraduacaoIncompleta">Pós Graduação Incompleta</option>
+              <option value="posGraduacaoCompleta">Pós Graduação Completa</option>
+              <option value="mestradoIncompleto">Mestrado Incompleto</option>
+              <option value="mestradoCompleto">Mestrado Completo</option>
+              <option value="doutoradoIncompleto">Doutorado Incompleto</option>
+              <option value="doutoradoCompleto">Doutorado Completo</option>
+              <option value="posDoutoradoIncompleto">Pós Doutorado Incompleto</option>
+              <option value="posDoutoradoCompleto">Pós Doutorado Completo</option>
             </Form.Select>
           </Form.Group>
           <Form.Group className="mb-3">
