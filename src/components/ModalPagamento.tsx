@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal, Button, Form } from 'react-bootstrap';
+import { Modal, Button, Form, ToastContainer } from 'react-bootstrap';
 import api from '../services/api';
 import axios from 'axios';
 import { toast } from 'react-toastify';
@@ -26,7 +26,11 @@ const ModalPagamento: React.FC<ModalPagamentoProps> = ({ show, handleClose, clie
                 metodoPagamentoEnum: metodoPagamento,
             });
             toast.success('Pagamento cadastrado com sucesso!');
-            handleClose();
+    
+            // Fechar o modal após um pequeno delay para garantir que o toast seja renderizado
+            setTimeout(() => {
+                handleClose();
+            }, 300);
         } catch (error: unknown) {
             if (axios.isAxiosError(error)) {
                 toast.error(`Erro ao cadastrar pagamento: ${error.response?.data?.message || 'Erro desconhecido'}`);
@@ -35,8 +39,11 @@ const ModalPagamento: React.FC<ModalPagamentoProps> = ({ show, handleClose, clie
             }
         }
     };
+    
 
     return (
+        <>
+        <ToastContainer />
         <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
                 <Modal.Title>Cadastrar Pagamento</Modal.Title>
@@ -94,6 +101,7 @@ const ModalPagamento: React.FC<ModalPagamentoProps> = ({ show, handleClose, clie
                 </Button>
             </Modal.Footer>
         </Modal>
+        </>
     );
 };
 
