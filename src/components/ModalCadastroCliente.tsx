@@ -3,6 +3,8 @@ import { Modal, Button, Form } from "react-bootstrap";
 import api from "../services/api";
 import axios from "axios";
 import { toast } from 'react-toastify';
+import { EscolaridadeEnum } from "../types/enums";
+
 
 interface ModalCadastroClienteProps {
   show: boolean;
@@ -268,13 +270,7 @@ const ModalCadastroCliente: React.FC<ModalCadastroClienteProps> = ({
             <Form.Label>Escolaridade</Form.Label>
             <Form.Select
               value={escolaridadeEnum}
-              onChange={(e) =>
-                setEscolaridadeEnum(
-                  e.target.value as "ensinoFundamentalIncompleto" | "ensinoFundamentalCompleto" | "ensinoMedioIncompleto" | "ensinoMedioCompleto" | "ensinoSuperiorIncompleto" | 
-                  "ensinoSuperiorCompleto" | "posGraduacaoIncompleta" | "posGraduacaoCompleta" | "mestradoIncompleto" | "mestradoCompleto" | "doutoradoIncompleto" | "doutoradoCompleto" |
-                  "posDoutoradoIncompleto" | "posDoutoradoCompleto"
-                )
-              }
+              onChange={(e) => setEscolaridadeEnum(e.target.value as EscolaridadeEnum)}
             >
               <option value="">Selecione</option>
               <option value="ensinoFundamentalIncompleto">Ensino Fundamental Incompleto</option>

@@ -89,19 +89,20 @@ const Home: React.FC = () => {
 
   const handleDelete = async (cpf: string) => {
     const confirmDelete = window.confirm(
-      "Tem certeza que deseja excluir este cliente?"
+        "Tem certeza que deseja excluir este cliente?"
     );
     if (!confirmDelete) return;
 
     try {
-      await api.delete(`/clients/${cpf}`);
-      toast.success("Cliente excluído com sucesso!");
-      setClients((prev) => prev.filter((client) => client.cpf !== cpf));
+        await api.delete(`/clients/${cpf}`);
+        setClients((prev) => prev.filter((client) => client.cpf !== cpf));
+        toast.success("Cliente excluído com sucesso!");
     } catch (error) {
-      console.error("Erro ao excluir cliente:", error);
-      toast.error("Erro ao excluir cliente.");
+        console.error("Erro ao excluir cliente:", error);
+        toast.error("Erro ao excluir cliente.");
     }
-  };
+};
+
 
   const filteredClients = clients.filter((client) =>
     client.nome.toLowerCase().includes(search.toLowerCase())

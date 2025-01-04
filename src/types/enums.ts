@@ -1,0 +1,16 @@
+export enum EscolaridadeEnum {
+  ensinoFundamentalIncompleto = "ensinoFundamentalIncompleto",
+  ensinoFundamentalCompleto = "ensinoFundamentalCompleto",
+  ensinoMedioIncompleto = "ensinoMedioIncompleto",
+  ensinoMedioCompleto = "ensinoMedioCompleto",
+  ensinoSuperiorIncompleto = "ensinoSuperiorIncompleto",
+  ensinoSuperiorCompleto = "ensinoSuperiorCompleto",
+  posGraduacaoIncompleta = "posGraduacaoIncompleta",
+  posGraduacaoCompleta = "posGraduacaoCompleta",
+  mestradoIncompleto = "mestradoIncompleto",
+  mestradoCompleto = "mestradoCompleto",
+  doutoradoIncompleto = "doutoradoIncompleto",
+  doutoradoCompleto = "doutoradoCompleto",
+  posDoutoradoIncompleto = "posDoutoradoIncompleto",
+  posDoutoradoCompleto = "posDoutoradoCompleto",
+}
