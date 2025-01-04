@@ -19,7 +19,6 @@ const ModalClienteInfo: React.FC<ModalClienteInfoProps> = ({
     ...client,
   });
 
-  // Inicializa o estado com os dados do cliente e formata a data
   useEffect(() => {
     setUpdatedClient({
       ...client,
@@ -28,24 +27,6 @@ const ModalClienteInfo: React.FC<ModalClienteInfoProps> = ({
         : client.dataNascimento,
     });
   }, [client]);
-
-  // useEffect(() => {
-  //   setUpdatedClient({
-  //     ...client,
-  //     dataInicioTratamento: client.dataInicioTratamento.includes("/")
-  //       ? client.dataInicioTratamento.split("/").reverse().join("-")
-  //       : client.dataInicioTratamento,
-  //   });
-  // }, [client]);
-
-  // useEffect(() => {
-  //   setUpdatedClient({
-  //     ...client,
-  //     dataFimTratamento: client.dataFimTratamento.includes("/")
-  //       ? client.dataFimTratamento.split("/").reverse().join("-")
-  //       : client.dataFimTratamento,
-  //   });
-  // }, [client]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>

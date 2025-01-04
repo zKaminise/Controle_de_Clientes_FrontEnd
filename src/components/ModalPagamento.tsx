@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import api from '../services/api';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 interface ModalPagamentoProps {
     show: boolean;
@@ -24,7 +25,7 @@ const ModalPagamento: React.FC<ModalPagamentoProps> = ({ show, handleClose, clie
                 referencia,
                 metodoPagamentoEnum: metodoPagamento,
             });
-            alert('Pagamento cadastrado com sucesso!');
+            toast.success('Pagamento cadastrado com sucesso!');
             handleClose();
         } catch (error: unknown) {
             if (axios.isAxiosError(error)) {

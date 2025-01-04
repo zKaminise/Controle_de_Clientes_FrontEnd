@@ -25,7 +25,7 @@ const Login: React.FC = () => {
     };
 
     return (
-        <Container className="d-flex justify-content-center align-items-center vh-100" style={{ backgroundImage: 'url(/path/to/background.jpg)', backgroundSize: 'cover' }}>
+        <Container fluid className="d-flex justify-content-center align-items-center vh-100 bg-light" style={{ backgroundImage: 'url(./src/assets/bkgLoginImage.jpg)', backgroundSize: 'cover' }}>
             <div className="p-4 bg-white rounded shadow">
                 <h2 className="mb-4">Login</h2>
                 <Form>
@@ -48,7 +48,7 @@ const Login: React.FC = () => {
                         />
                     </Form.Group>
                     <Button variant="primary" className="w-100 mb-2" onClick={handleLogin}>Entrar</Button>
-                    <Button variant="secondary" className="w-100 mb-2" onClick={() => navigate('/register')}>Cadastrar-se</Button>
+                    {/* <Button variant="secondary" className="w-100 mb-2" onClick={() => navigate('/register')}>Cadastrar-se</Button> */}
                 </Form>
             </div>
         </Container>

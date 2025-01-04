@@ -3,7 +3,7 @@ import { Navbar, Nav, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 interface HeaderProps {
-  currentPage: string; // Indica a página atual
+  currentPage: string;
 }
 
 const Header: React.FC<HeaderProps> = ({ currentPage }) => {

@@ -6,6 +6,7 @@ import ModalClienteInfo from "./ModalClienteInfo";
 import ModalCadastroCliente from "./ModalCadastroCliente";
 import { Client } from "../interfaces/Client";
 import { FaTrash } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 const Home: React.FC = () => {
   const [clients, setClients] = useState<Client[]>([]);
@@ -60,7 +61,7 @@ const Home: React.FC = () => {
       };
 
       await api.put(`/clients/${updatedClient.cpf}`, formattedClient);
-      alert("Cliente atualizado com sucesso!");
+      toast.success("Cliente atualizado com sucesso!");
 
       const updatedClients = clients.map((client) =>
         client.cpf === updatedClient.cpf ? updatedClient : client
@@ -94,7 +95,7 @@ const Home: React.FC = () => {
 
     try {
       await api.delete(`/clients/${cpf}`);
-      alert("Cliente excluído com sucesso!");
+      toast.success("Cliente excluído com sucesso!");
       setClients((prev) => prev.filter((client) => client.cpf !== cpf));
     } catch (error) {
       console.error("Erro ao excluir cliente:", error);

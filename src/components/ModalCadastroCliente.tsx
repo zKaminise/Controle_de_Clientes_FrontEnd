@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import api from "../services/api";
 import axios from "axios";
+import { toast } from 'react-toastify';
 
 interface ModalCadastroClienteProps {
   show: boolean;
@@ -88,6 +89,7 @@ const ModalCadastroCliente: React.FC<ModalCadastroClienteProps> = ({
       };
 
       await api.post("/clients", payload);
+      toast.success("Cliente cadastrado com sucesso!");
       refreshClients();
       handleClose();
     } catch (error: unknown) {

@@ -3,6 +3,7 @@ import { Container, Button, Table, Modal, Form } from "react-bootstrap";
 import Header from "./Header";
 import api from "../services/api";
 import { FaEdit, FaTrash } from "react-icons/fa";
+import { toast } from 'react-toastify';
 
 interface Client {
   nome: string;
@@ -29,7 +30,7 @@ const Financeiro: React.FC = () => {
   const [showReportModal, setShowReportModal] = useState(false);
 
   const [paymentData, setPaymentData] = useState({
-    id: null as number | null, // ID pode ser nulo inicialmente
+    id: null as number | null,
     valorPago: "",
     diaDoPagamento: "",
     referencia: "",
@@ -83,10 +84,10 @@ const Financeiro: React.FC = () => {
     setShowPaymentModal(true);
   };
 
-  const handleGenerateReceipt = (client: Client) => {
-    setSelectedClient(client);
-    setShowReceiptModal(true);
-  };
+  // const handleGenerateReceipt = (client: Client) => {
+  //   setSelectedClient(client);
+  //   setShowReceiptModal(true);
+  // };
 
 //   const handlePaymentSubmit = async () => {
 //     try {
@@ -114,15 +115,15 @@ const Financeiro: React.FC = () => {
       const response = await api.get(
         `/financeiro/receipt/${selectedClient?.cpf}/${month}/${year}`,
         {
-          responseType: "blob", // Indica que a resposta é um arquivo
+          responseType: "blob",
         }
       );
 
       const fileURL = URL.createObjectURL(
         new Blob([response.data], { type: "application/pdf" })
       );
-      alert("Recibo gerado com sucesso!");
-      window.open(fileURL, "_blank"); // Abre o PDF em uma nova aba
+      toast.success("Recibo gerado com sucesso!");
+      window.open(fileURL, "_blank");
       setShowReceiptModal(false);
       setMonth("");
       setYear("");
@@ -136,14 +137,14 @@ const Financeiro: React.FC = () => {
     try {
       const response = await api.get("/financeiro/report", {
         params: { startDate, endDate },
-        responseType: "blob", // Indica que a resposta é um arquivo
+        responseType: "blob",
       });
 
       const fileURL = URL.createObjectURL(
         new Blob([response.data], { type: "application/pdf" })
       );
-      alert("Relatório gerado com sucesso!");
-      window.open(fileURL, "_blank"); // Abre o PDF em uma nova aba
+      toast.success("Relatório gerado com sucesso!");
+      window.open(fileURL, "_blank");
       setShowReportModal(false);
       setStartDate("");
       setEndDate("");
@@ -155,19 +156,19 @@ const Financeiro: React.FC = () => {
 
   const convertDateToISO = (date: string): string => {
     const [day, month, year] = date.split("/");
-    return `${year}-${month}-${day}`; // Retorna no formato YYYY-MM-DD
+    return `${year}-${month}-${day}`;
   };
   
 
   const handleEditPayment = (payment: Payment) => {
     const formattedDate = payment.diaDoPagamento
-      ? convertDateToISO(payment.diaDoPagamento) // Converte a data para o formato ISO
-      : ""; // Deixa vazio se a data não for válida
+      ? convertDateToISO(payment.diaDoPagamento)
+      : "";
   
     setPaymentData({
       id: payment.id,
       valorPago: payment.valorPago,
-      diaDoPagamento: formattedDate, // Usa a data formatada
+      diaDoPagamento: formattedDate,
       referencia: payment.referencia,
       metodoPagamentoEnum: payment.metodoPagamentoEnum,
     });
@@ -209,13 +210,12 @@ const Financeiro: React.FC = () => {
       };
   
       if (paymentData.id) {
-        // Atualiza o pagamento
+
         await api.put(`/financeiro/${paymentData.id}`, paymentDataRequest);
-        alert("Pagamento atualizado com sucesso!");
+        toast.success("Pagamento atualizado com sucesso!");
       } else {
-        // Cadastra novo pagamento
         await api.post("/financeiro", paymentDataRequest);
-        alert("Pagamento cadastrado com sucesso!");
+        toast.success("Pagamento cadastrado com sucesso!");
       }
   
       fetchPayments();
@@ -232,8 +232,8 @@ const Financeiro: React.FC = () => {
     if (window.confirm("Tem certeza que deseja excluir este pagamento?")) {
       try {
         await api.delete(`/financeiro/${id}`);
-        alert("Pagamento excluído com sucesso!");
-        setPayments(payments.filter((payment) => payment.id !== id)); // Atualiza a lista local
+        toast.success("Pagamento excluído com sucesso!");
+        setPayments(payments.filter((payment) => payment.id !== id));
       } catch (error) {
         console.error("Erro ao excluir pagamento:", error);
         alert("Erro ao excluir pagamento.");
@@ -282,13 +282,13 @@ const Financeiro: React.FC = () => {
                 </td>
                 <td>{client.cpf}</td>
                 <td>
-                  <Button
+                  {/* <Button
                     variant="info"
                     className="me-2"
                     onClick={() => handleGenerateReceipt(client)}
                   >
                     Gerar Recibo
-                  </Button>
+                  </Button> */}
                   <Button
                     variant="primary"
                     onClick={() => handleAddPayment(client)}
