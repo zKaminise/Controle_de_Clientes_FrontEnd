@@ -70,6 +70,11 @@ const ModalCadastroCliente: React.FC<ModalCadastroClienteProps> = ({
   const [dataFimTratamento, setDataFimTratamento] = useState("");
 
   const handleSave = async () => {
+        // Verifica se algum campo obrigatório está vazio
+        if (!nome || !cpf || !email || !telefone || !endereco || !dataNascimento) {
+          toast.error("Por favor, preencha todos os campos obrigatórios!");
+          return;
+        }
     try {
       const payload = {
         nome,
@@ -127,7 +132,7 @@ const ModalCadastroCliente: React.FC<ModalCadastroClienteProps> = ({
             />
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Label>CPF</Form.Label>
+            <Form.Label>CPF (Somente Números)</Form.Label>
             <Form.Control
               type="text"
               placeholder="Digite o CPF"
