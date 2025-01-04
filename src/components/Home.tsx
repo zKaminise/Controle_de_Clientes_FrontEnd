@@ -38,7 +38,7 @@ const Home: React.FC = () => {
       setShowModal(true);
     } catch (error) {
       console.error("Erro ao carregar cliente:", error);
-      alert("Erro ao carregar informações do cliente.");
+      toast.error("Erro ao carregar informações do cliente.");
     }
   };
 
@@ -69,7 +69,7 @@ const Home: React.FC = () => {
       setClients(updatedClients);
     } catch (error) {
       console.error("Erro ao atualizar cliente:", error);
-      alert("Erro ao atualizar cliente.");
+      toast.error("Erro ao atualizar cliente.");
     }
     handleModalClose();
   };
@@ -99,7 +99,7 @@ const Home: React.FC = () => {
       setClients((prev) => prev.filter((client) => client.cpf !== cpf));
     } catch (error) {
       console.error("Erro ao excluir cliente:", error);
-      alert("Erro ao excluir cliente.");
+      toast.error("Erro ao excluir cliente.");
     }
   };
 

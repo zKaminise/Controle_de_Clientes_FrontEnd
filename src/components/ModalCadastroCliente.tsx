@@ -94,13 +94,13 @@ const ModalCadastroCliente: React.FC<ModalCadastroClienteProps> = ({
       handleClose();
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {
-        alert(
+        toast.error(
           `Erro ao cadastrar cliente: ${
             error.response?.data?.message || "Erro desconhecido"
           }`
         );
       } else {
-        alert("Erro ao cadastrar cliente.");
+        toast.error("Erro ao cadastrar cliente.");
       }
     }
   };

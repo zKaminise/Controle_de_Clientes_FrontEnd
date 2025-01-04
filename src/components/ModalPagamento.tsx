@@ -29,9 +29,9 @@ const ModalPagamento: React.FC<ModalPagamentoProps> = ({ show, handleClose, clie
             handleClose();
         } catch (error: unknown) {
             if (axios.isAxiosError(error)) {
-                alert(`Erro ao cadastrar pagamento: ${error.response?.data?.message || 'Erro desconhecido'}`);
+                toast.error(`Erro ao cadastrar pagamento: ${error.response?.data?.message || 'Erro desconhecido'}`);
             } else {
-                alert('Erro ao cadastrar pagamento.');
+                toast.error('Erro ao cadastrar pagamento.');
             }
         }
     };

@@ -75,7 +75,7 @@ const Financeiro: React.FC = () => {
       setShowPaymentsModal(true);
     } catch (error) {
       console.error("Erro ao carregar pagamentos:", error);
-      alert("Erro ao carregar pagamentos do cliente.");
+      toast.error("Erro ao carregar pagamentos do cliente.");
     }
   };
 
@@ -129,7 +129,7 @@ const Financeiro: React.FC = () => {
       setYear("");
     } catch (error) {
       console.error("Erro ao gerar recibo:", error);
-      alert("Erro ao gerar recibo. Verifique os dados selecionados.");
+      toast.error("Erro ao gerar recibo. Verifique os dados selecionados.");
     }
   };
 
@@ -150,7 +150,7 @@ const Financeiro: React.FC = () => {
       setEndDate("");
     } catch (error) {
       console.error("Erro ao gerar relatório:", error);
-      alert("Erro ao gerar relatório. Verifique as datas.");
+      toast.error("Erro ao gerar relatório. Verifique as datas.");
     }
   };
 
@@ -185,7 +185,7 @@ const Financeiro: React.FC = () => {
       setPayments(response.data);
     } catch (error) {
       console.error("Erro ao carregar pagamentos:", error);
-      alert("Erro ao carregar pagamentos.");
+      toast.error("Erro ao carregar pagamentos.");
     }
   };
 
@@ -223,7 +223,7 @@ const Financeiro: React.FC = () => {
       resetForm();
     } catch (error) {
       console.error("Erro ao salvar pagamento:", error);
-      alert("Erro ao salvar pagamento.");
+      toast.error("Erro ao salvar pagamento.");
     }
   };
   
@@ -236,7 +236,7 @@ const Financeiro: React.FC = () => {
         setPayments(payments.filter((payment) => payment.id !== id));
       } catch (error) {
         console.error("Erro ao excluir pagamento:", error);
-        alert("Erro ao excluir pagamento.");
+        toast.error("Erro ao excluir pagamento.");
       }
     }
   };
