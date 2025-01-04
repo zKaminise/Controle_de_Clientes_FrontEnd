@@ -92,8 +92,11 @@ const ModalCadastroCliente: React.FC<ModalCadastroClienteProps> = ({
 
       await api.post("/clients", payload);
       toast.success("Cliente cadastrado com sucesso!");
-      refreshClients();
-      handleClose();
+
+      setTimeout(() => {
+        refreshClients();
+        handleClose();
+    }, 300);
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {
         toast.error(

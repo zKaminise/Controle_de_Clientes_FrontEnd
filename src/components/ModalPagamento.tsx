@@ -27,7 +27,6 @@ const ModalPagamento: React.FC<ModalPagamentoProps> = ({ show, handleClose, clie
             });
             toast.success('Pagamento cadastrado com sucesso!');
     
-            // Fechar o modal após um pequeno delay para garantir que o toast seja renderizado
             setTimeout(() => {
                 handleClose();
             }, 300);
