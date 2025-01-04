@@ -8,14 +8,16 @@ import "react-toastify/dist/ReactToastify.css";
 
 const App: React.FC = () => {
     return (
-        <Router>
+        <>
             <ToastContainer />
-            <Routes>
-                <Route path="/" element={<Login />} />
-                <Route path="/home" element={<Home />} />
-                <Route path="/financeiro" element={<Financeiro />} />
-            </Routes>
-        </Router>
+            <Router>
+                <Routes>
+                    <Route path="/" element={<Login />} />
+                    <Route path="/home" element={<Home />} />
+                    <Route path="/financeiro" element={<Financeiro />} />
+                </Routes>
+            </Router>
+        </>
     );
 };
 
