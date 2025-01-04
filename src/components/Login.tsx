@@ -47,7 +47,7 @@ const Login: React.FC = () => {
     };
 
     return (
-        <Container fluid className="d-flex justify-content-center align-items-center vh-100 bg-light" style={{ backgroundImage: 'url(./src/assets/bkgLoginImage.jpg)', backgroundSize: 'cover' }}>
+        <Container fluid className="d-flex justify-content-center align-items-center vh-100 bg-light" style={{ backgroundImage: 'url(/bkgLoginImage.jpg)', backgroundSize: 'cover' }}>
             <ToastContainer />
             <div className="p-4 bg-white rounded shadow">
                 <h2 className="mb-4">Login</h2>
