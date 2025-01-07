@@ -69,9 +69,54 @@ const ModalCadastroCliente: React.FC<ModalCadastroClienteProps> = ({
   const [dataInicioTratamento, setDataInicioTratamento] = useState("");
   const [dataFimTratamento, setDataFimTratamento] = useState("");
 
+  //Estado dos erros
+  const [errors, setErrors] = useState({
+    nome: false,
+    cpf: false,
+    email: false,
+    telefone: false,
+    endereco: false,
+    dataNascimento: false,
+    generoEnum: false,
+    estadosEnum: false,
+    religiao: false,
+    tratamento: false,
+    medicamentos: false,
+    queixaPrincipal: false,
+    frequencia: false,
+    escolaridadeEnum: false,
+    dataInicioTratamento: false,
+
+  });
+
+    // Validação
+    const validateFields = () => {
+      const newErrors = {
+        nome: !nome,
+        cpf: !cpf,
+        email: !email,
+        telefone: !telefone,
+        endereco: !endereco,
+        dataNascimento: !dataNascimento,
+        generoEnum: !generoEnum,
+        estadosEnum: !estadosEnum,
+        religiao: !religiao,
+        tratamento: !tratamento,
+        medicamentos: !medicamentos,
+        queixaPrincipal: !queixaPrincipal,
+        frequencia: !frequencia,
+        escolaridadeEnum: !escolaridadeEnum,
+        dataInicioTratamento: !dataInicioTratamento
+      };
+      setErrors(newErrors);
+  
+      // Retorna true se não houver erros
+      return !Object.values(newErrors).includes(true);
+    };
+
   const handleSave = async () => {
         // Verifica se algum campo obrigatório está vazio
-        if (!nome || !cpf || !email || !telefone || !endereco || !dataNascimento) {
+        if (!validateFields()) {
           toast.error("Por favor, preencha todos os campos obrigatórios!");
           return;
         }
@@ -123,60 +168,75 @@ const ModalCadastroCliente: React.FC<ModalCadastroClienteProps> = ({
       <Modal.Body>
         <Form>
           <Form.Group className="mb-3">
-            <Form.Label>Nome</Form.Label>
+            <Form.Label>Nome *</Form.Label>
             <Form.Control
               type="text"
               placeholder="Digite o nome"
               value={nome}
               onChange={(e) => setNome(e.target.value)}
-            />
+              isInvalid={errors.nome}
+              />
+              {errors.nome && <Form.Text className="text-danger">Nome é obrigatório!</Form.Text>}
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Label>CPF (Somente Números)</Form.Label>
+            <Form.Label>CPF (Somente Números) *</Form.Label>
             <Form.Control
               type="text"
               placeholder="Digite o CPF"
               value={cpf}
               onChange={(e) => setCpf(e.target.value)}
-            />
+              isInvalid={errors.cpf}
+              />
+              {errors.cpf && <Form.Text className="text-danger">CPF é obrigatório!</Form.Text>}
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Label>Email</Form.Label>
+            <Form.Label>Email *</Form.Label>
             <Form.Control
               type="email"
               placeholder="Digite o email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-            />
+              isInvalid={errors.email}
+              />
+              {errors.email && <Form.Text className="text-danger">Email é obrigatório!</Form.Text>}
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Label>Telefone</Form.Label>
+            <Form.Label>Telefone *</Form.Label>
             <Form.Control
               type="text"
               placeholder="Digite o telefone"
               value={telefone}
               onChange={(e) => setTelefone(e.target.value)}
-            />
+              isInvalid={errors.telefone}
+              />
+              {errors.telefone && <Form.Text className="text-danger">Telefone é obrigatório!</Form.Text>}
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Label>Endereço</Form.Label>
+            <Form.Label>Endereço *</Form.Label>
             <Form.Control
               type="text"
               placeholder="Digite o endereço"
               value={endereco}
               onChange={(e) => setEndereco(e.target.value)}
-            />
+              isInvalid={errors.endereco}
+              />
+              {errors.endereco && <Form.Text className="text-danger">Endereço é obrigatório!</Form.Text>}
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Label>Data de Nascimento</Form.Label>
+            <Form.Label>Data de Nascimento *</Form.Label>
             <Form.Control
               type="date"
               value={dataNascimento}
               onChange={(e) => setDataNascimento(e.target.value)}
-            />
+              isInvalid={errors.dataNascimento}
+              />
+              {errors.dataNascimento && (
+                <Form.Text className="text-danger">Data de nascimento é obrigatória!</Form.Text>
+              )}
+            
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Label>Gênero</Form.Label>
+            <Form.Label>Gênero *</Form.Label>
             <Form.Select
               value={generoEnum}
               onChange={(e) =>
@@ -184,7 +244,9 @@ const ModalCadastroCliente: React.FC<ModalCadastroClienteProps> = ({
                   e.target.value as "MASCULINO" | "FEMININO" | "OUTRO"
                 )
               }
+              isInvalid={errors.generoEnum}
             >
+            {errors.generoEnum && <Form.Text className="text-danger">Genero é obrigatório!</Form.Text>}
               <option value="">Selecione</option>
               <option value="MASCULINO">Masculino</option>
               <option value="FEMININO">Feminino</option>
@@ -192,13 +254,16 @@ const ModalCadastroCliente: React.FC<ModalCadastroClienteProps> = ({
             </Form.Select>
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Label>Estado</Form.Label>
+            <Form.Label>Estado *</Form.Label>
             <Form.Select
               value={estadosEnum}
               onChange={(e) =>
                 setEstadosEnum(e.target.value as typeof estadosEnum)
               }
-            >
+              isInvalid={errors.estadosEnum}
+              >
+              {errors.estadosEnum && <Form.Text className="text-danger">Estado é obrigatório!</Form.Text>}
+            
               <option value="">Selecione</option>
               <option value="AC">AC</option>
               <option value="AL">AL</option>
@@ -230,56 +295,74 @@ const ModalCadastroCliente: React.FC<ModalCadastroClienteProps> = ({
             </Form.Select>
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Label>Religião</Form.Label>
+            <Form.Label>Religião *</Form.Label>
             <Form.Control
               type="text"
               placeholder="Digite a religião"
               value={religiao}
               onChange={(e) => setReligiao(e.target.value)}
-            />
+              isInvalid={errors.religiao}
+              />
+              {errors.religiao && <Form.Text className="text-danger">Religião é obrigatório!</Form.Text>}
+            
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Label>Tratamento</Form.Label>
+            <Form.Label>Tratamento *</Form.Label>
             <Form.Control
               type="text"
               placeholder="Digite o tratamento"
               value={tratamento}
               onChange={(e) => setTratamento(e.target.value)}
-            />
+              isInvalid={errors.tratamento}
+              />
+              {errors.tratamento && <Form.Text className="text-danger">Tratamento é obrigatório!</Form.Text>}
+            
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Label>Medicamentos</Form.Label>
+            <Form.Label>Medicamentos *</Form.Label>
             <Form.Control
               type="text"
               placeholder="Digite os medicamentos"
               value={medicamentos}
               onChange={(e) => setMedicamentos(e.target.value)}
-            />
+              isInvalid={errors.medicamentos}
+              />
+              {errors.medicamentos && <Form.Text className="text-danger">Endereço é obrigatório!</Form.Text>}
+            
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Label>Queixa Principal</Form.Label>
+            <Form.Label>Queixa Principal *</Form.Label>
             <Form.Control
               as="textarea"
               placeholder="Digite a queixa principal"
               value={queixaPrincipal}
               onChange={(e) => setQueixaPrincipal(e.target.value)}
-            />
+              isInvalid={errors.queixaPrincipal}
+              />
+              {errors.queixaPrincipal && <Form.Text className="text-danger">Queixa Principal é obrigatório!</Form.Text>}
+            
             <Form.Group className="mb-3">
-              <Form.Label>Frequencia</Form.Label>
+              <Form.Label>Frequencia *</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Informe a Frequencia do Tratamento"
                 value={frequencia}
                 onChange={(e) => setFrequencia(e.target.value)}
-              />
+                isInvalid={errors.frequencia}
+                />
+                {errors.frequencia && <Form.Text className="text-danger">Frequencia é obrigatório!</Form.Text>}
+              
             </Form.Group>
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Label>Escolaridade</Form.Label>
+            <Form.Label>Escolaridade *</Form.Label>
             <Form.Select
               value={escolaridadeEnum}
               onChange={(e) => setEscolaridadeEnum(e.target.value as EscolaridadeEnum)}
-            >
+              isInvalid={errors.escolaridadeEnum}
+              >
+              {errors.escolaridadeEnum && <Form.Text className="text-danger">Escolaridade é obrigatório!</Form.Text>}
+            
               <option value="">Selecione</option>
               <option value="ensinoFundamentalIncompleto">Ensino Fundamental Incompleto</option>
               <option value="ensinoFundamentalCompleto">Ensino Fundamental Completo</option>
@@ -298,12 +381,15 @@ const ModalCadastroCliente: React.FC<ModalCadastroClienteProps> = ({
             </Form.Select>
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Label>Data Inicio do Tratamento</Form.Label>
+            <Form.Label>Data Inicio do Tratamento *</Form.Label>
             <Form.Control
               type="date"
               value={dataInicioTratamento}
               onChange={(e) => setDataInicioTratamento(e.target.value)}
-            />
+              isInvalid={errors.dataInicioTratamento}
+              />
+              {errors.dataInicioTratamento && <Form.Text className="text-danger">Data de Inicio do Tratamento é obrigatório!</Form.Text>}
+            
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Data Final do Tratamento</Form.Label>
