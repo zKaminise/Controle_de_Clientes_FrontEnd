@@ -73,9 +73,9 @@ const Login: React.FC = () => {
                     <Button variant="primary" className="w-100 mb-2" onClick={handleLogin}>
                         Entrar
                     </Button>
-                    <Button variant="secondary" className="w-100 mb-2" onClick={() => setShowRegisterModal(true)}>
+                    {/* <Button variant="secondary" className="w-100 mb-2" onClick={() => setShowRegisterModal(true)}>
                         Cadastrar-se
-                    </Button>
+                    </Button> */}
                 </Form>
             </div>
 
