@@ -93,9 +93,9 @@ const ModalCadastroCliente: React.FC<ModalCadastroClienteProps> = ({
     const validateFields = () => {
       const newErrors = {
         nome: !nome,
-        cpf: !cpf,
-        email: !email,
-        telefone: !telefone,
+        cpf: !/^\d{11}$/.test(cpf),
+        email: !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email),
+        telefone: !/^\d{10,11}$/.test(telefone),
         endereco: !endereco,
         dataNascimento: !dataNascimento,
         generoEnum: !generoEnum,
