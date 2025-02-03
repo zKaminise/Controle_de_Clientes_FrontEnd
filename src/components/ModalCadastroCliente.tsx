@@ -175,6 +175,7 @@ const ModalCadastroCliente: React.FC<ModalCadastroClienteProps> = ({
               value={nome}
               onChange={(e) => setNome(e.target.value)}
               isInvalid={errors.nome}
+              className="w-100"
               />
               {errors.nome && <Form.Text className="text-danger">Nome é obrigatório!</Form.Text>}
           </Form.Group>
@@ -186,6 +187,7 @@ const ModalCadastroCliente: React.FC<ModalCadastroClienteProps> = ({
               value={cpf}
               onChange={(e) => setCpf(e.target.value)}
               isInvalid={errors.cpf}
+              className="w-100"
               />
               {errors.cpf && <Form.Text className="text-danger">CPF é obrigatório!</Form.Text>}
           </Form.Group>
@@ -197,6 +199,7 @@ const ModalCadastroCliente: React.FC<ModalCadastroClienteProps> = ({
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               isInvalid={errors.email}
+              className="w-100"
               />
               {errors.email && <Form.Text className="text-danger">Email é obrigatório!</Form.Text>}
           </Form.Group>
@@ -208,6 +211,7 @@ const ModalCadastroCliente: React.FC<ModalCadastroClienteProps> = ({
               value={telefone}
               onChange={(e) => setTelefone(e.target.value)}
               isInvalid={errors.telefone}
+              className="w-100"
               />
               {errors.telefone && <Form.Text className="text-danger">Telefone é obrigatório!</Form.Text>}
           </Form.Group>
@@ -219,6 +223,7 @@ const ModalCadastroCliente: React.FC<ModalCadastroClienteProps> = ({
               value={endereco}
               onChange={(e) => setEndereco(e.target.value)}
               isInvalid={errors.endereco}
+              className="w-100"
               />
               {errors.endereco && <Form.Text className="text-danger">Endereço é obrigatório!</Form.Text>}
           </Form.Group>
@@ -229,6 +234,7 @@ const ModalCadastroCliente: React.FC<ModalCadastroClienteProps> = ({
               value={dataNascimento}
               onChange={(e) => setDataNascimento(e.target.value)}
               isInvalid={errors.dataNascimento}
+              className="w-100"
               />
               {errors.dataNascimento && (
                 <Form.Text className="text-danger">Data de nascimento é obrigatória!</Form.Text>
@@ -245,6 +251,7 @@ const ModalCadastroCliente: React.FC<ModalCadastroClienteProps> = ({
                 )
               }
               isInvalid={errors.generoEnum}
+              className="w-100"
             >
             {errors.generoEnum && <Form.Text className="text-danger">Genero é obrigatório!</Form.Text>}
               <option value="">Selecione</option>
@@ -261,6 +268,7 @@ const ModalCadastroCliente: React.FC<ModalCadastroClienteProps> = ({
                 setEstadosEnum(e.target.value as typeof estadosEnum)
               }
               isInvalid={errors.estadosEnum}
+              className="w-100"
               >
               {errors.estadosEnum && <Form.Text className="text-danger">Estado é obrigatório!</Form.Text>}
             
@@ -302,6 +310,7 @@ const ModalCadastroCliente: React.FC<ModalCadastroClienteProps> = ({
               value={religiao}
               onChange={(e) => setReligiao(e.target.value)}
               isInvalid={errors.religiao}
+              className="w-100"
               />
               {errors.religiao && <Form.Text className="text-danger">Religião é obrigatório!</Form.Text>}
             
@@ -314,6 +323,7 @@ const ModalCadastroCliente: React.FC<ModalCadastroClienteProps> = ({
               value={tratamento}
               onChange={(e) => setTratamento(e.target.value)}
               isInvalid={errors.tratamento}
+              className="w-100"
               />
               {errors.tratamento && <Form.Text className="text-danger">Tratamento é obrigatório!</Form.Text>}
             
@@ -326,6 +336,7 @@ const ModalCadastroCliente: React.FC<ModalCadastroClienteProps> = ({
               value={medicamentos}
               onChange={(e) => setMedicamentos(e.target.value)}
               isInvalid={errors.medicamentos}
+              className="w-100"
               />
               {errors.medicamentos && <Form.Text className="text-danger">Endereço é obrigatório!</Form.Text>}
             
@@ -338,6 +349,7 @@ const ModalCadastroCliente: React.FC<ModalCadastroClienteProps> = ({
               value={queixaPrincipal}
               onChange={(e) => setQueixaPrincipal(e.target.value)}
               isInvalid={errors.queixaPrincipal}
+              className="w-100"
               />
               {errors.queixaPrincipal && <Form.Text className="text-danger">Queixa Principal é obrigatório!</Form.Text>}
             
@@ -349,6 +361,7 @@ const ModalCadastroCliente: React.FC<ModalCadastroClienteProps> = ({
                 value={frequencia}
                 onChange={(e) => setFrequencia(e.target.value)}
                 isInvalid={errors.frequencia}
+                className="w-100"
                 />
                 {errors.frequencia && <Form.Text className="text-danger">Frequencia é obrigatório!</Form.Text>}
               
@@ -360,6 +373,7 @@ const ModalCadastroCliente: React.FC<ModalCadastroClienteProps> = ({
               value={escolaridadeEnum}
               onChange={(e) => setEscolaridadeEnum(e.target.value as EscolaridadeEnum)}
               isInvalid={errors.escolaridadeEnum}
+              className="w-100"
               >
               {errors.escolaridadeEnum && <Form.Text className="text-danger">Escolaridade é obrigatório!</Form.Text>}
             
@@ -387,6 +401,7 @@ const ModalCadastroCliente: React.FC<ModalCadastroClienteProps> = ({
               value={dataInicioTratamento}
               onChange={(e) => setDataInicioTratamento(e.target.value)}
               isInvalid={errors.dataInicioTratamento}
+              className="w-100"
               />
               {errors.dataInicioTratamento && <Form.Text className="text-danger">Data de Inicio do Tratamento é obrigatório!</Form.Text>}
             
@@ -396,6 +411,7 @@ const ModalCadastroCliente: React.FC<ModalCadastroClienteProps> = ({
             <Form.Control
               type="date"
               value={dataFimTratamento}
+              className="w-100"
               onChange={(e) => setDataFimTratamento(e.target.value)}
             />
           </Form.Group>

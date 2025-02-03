@@ -49,7 +49,7 @@ const Login: React.FC = () => {
     return (
         <Container fluid className="d-flex justify-content-center align-items-center vh-100 bg-light" style={{ backgroundImage: 'url(/bkgLoginImage.jpg)', backgroundSize: 'cover' }}>
             <ToastContainer />
-            <div className="p-4 bg-white rounded shadow">
+            <div className="p-4 bg-white rounded shadow"  style={{ width: '100%', maxWidth: '400px' }}>
                 <h2 className="mb-4">Login</h2>
                 <Form>
                     <Form.Group className="mb-3">

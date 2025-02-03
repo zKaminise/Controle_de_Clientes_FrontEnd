@@ -57,6 +57,7 @@ const ModalClienteInfo: React.FC<ModalClienteInfoProps> = ({
               name="nome"
               value={updatedClient.nome || ""}
               onChange={handleChange}
+              className="w-100"
             />
           </Form.Group>
           <Form.Group className="mb-3">
@@ -66,6 +67,7 @@ const ModalClienteInfo: React.FC<ModalClienteInfoProps> = ({
               name="cpf"
               value={updatedClient.cpf || ""}
               disabled
+              className="w-100"
             />
           </Form.Group>
           <Form.Group className="mb-3">
@@ -75,6 +77,7 @@ const ModalClienteInfo: React.FC<ModalClienteInfoProps> = ({
               name="email"
               value={updatedClient.email || ""}
               onChange={handleChange}
+              className="w-100"
             />
           </Form.Group>
           <Form.Group className="mb-3">
@@ -84,6 +87,7 @@ const ModalClienteInfo: React.FC<ModalClienteInfoProps> = ({
               name="telefone"
               value={updatedClient.telefone || ""}
               onChange={handleChange}
+              className="w-100"
             />
           </Form.Group>
           <Form.Group className="mb-3">
@@ -93,6 +97,7 @@ const ModalClienteInfo: React.FC<ModalClienteInfoProps> = ({
               name="endereco"
               value={updatedClient.endereco || ""}
               onChange={handleChange}
+              className="w-100"
             />
           </Form.Group>
           <Form.Group className="mb-3">
@@ -102,6 +107,7 @@ const ModalClienteInfo: React.FC<ModalClienteInfoProps> = ({
               name="dataNascimento"
               value={updatedClient.dataNascimento || ""}
               onChange={handleChange}
+              className="w-100"
             />
           </Form.Group>
           <Form.Group className="mb-3">
@@ -110,6 +116,7 @@ const ModalClienteInfo: React.FC<ModalClienteInfoProps> = ({
               name="generoEnum"
               value={updatedClient.generoEnum || ""}
               onChange={handleChange}
+              className="w-100"
             >
               <option value="MASCULINO">Masculino</option>
               <option value="FEMININO">Feminino</option>
@@ -122,6 +129,7 @@ const ModalClienteInfo: React.FC<ModalClienteInfoProps> = ({
               name="estadosEnum"
               value={updatedClient.estadosEnum || ""}
               onChange={handleChange}
+              className="w-100"
             >
               <option value="AC">AC</option>
               <option value="AL">AL</option>
@@ -159,6 +167,7 @@ const ModalClienteInfo: React.FC<ModalClienteInfoProps> = ({
               name="religiao"
               value={updatedClient.religiao || ""}
               onChange={handleChange}
+              className="w-100"
             />
           </Form.Group>
           <Form.Group className="mb-3">
@@ -168,6 +177,7 @@ const ModalClienteInfo: React.FC<ModalClienteInfoProps> = ({
               name="tratamento"
               value={updatedClient.tratamento || ""}
               onChange={handleChange}
+              className="w-100"
             />
           </Form.Group>
           <Form.Group className="mb-3">
@@ -177,6 +187,7 @@ const ModalClienteInfo: React.FC<ModalClienteInfoProps> = ({
               name="medicamentos"
               value={updatedClient.medicamentos || ""}
               onChange={handleChange}
+              className="w-100"
             />
           </Form.Group>
           <Form.Group className="mb-3">
@@ -186,6 +197,7 @@ const ModalClienteInfo: React.FC<ModalClienteInfoProps> = ({
               name="queixaPrincipal"
               value={updatedClient.queixaPrincipal || ""}
               onChange={handleChange}
+              className="w-100"
             />
           </Form.Group>
           <Form.Group className="mb-3">
@@ -195,6 +207,7 @@ const ModalClienteInfo: React.FC<ModalClienteInfoProps> = ({
               name="frequencia"
               value={updatedClient.frequencia || ""}
               onChange={handleChange}
+              className="w-100"
             />
           </Form.Group>
           <Form.Group className="mb-3">
@@ -203,6 +216,7 @@ const ModalClienteInfo: React.FC<ModalClienteInfoProps> = ({
               name="escolaridadeEnum"
               value={updatedClient.escolaridadeEnum || ""}
               onChange={handleChange}
+              className="w-100"
             >
               <option value="ensinoFundamentalIncompleto">Ensino Fundamental Incompleto</option>
               <option value="ensinoFundamentalCompleto">Ensino Fundamental Completo</option>
@@ -227,6 +241,7 @@ const ModalClienteInfo: React.FC<ModalClienteInfoProps> = ({
               name="dataInicioTramento"
               value={updatedClient.dataInicioTratamento || ""}
               onChange={handleChange}
+              className="w-100"
             />
           </Form.Group>
           <Form.Group className="mb-3">
@@ -236,6 +251,7 @@ const ModalClienteInfo: React.FC<ModalClienteInfoProps> = ({
               name="dataFimTratamento"
               value={updatedClient.dataFimTratamento || ""}
               onChange={handleChange}
+              className="w-100"
             />
           </Form.Group>
         </Form>

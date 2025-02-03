@@ -56,6 +56,7 @@ const ModalPagamento: React.FC<ModalPagamentoProps> = ({ show, handleClose, clie
                             placeholder="Digite o valor pago"
                             value={valorPago}
                             onChange={(e) => setValorPago(e.target.value)}
+                            className="w-100"
                         />
                     </Form.Group>
                     <Form.Group className="mb-3">
@@ -63,6 +64,7 @@ const ModalPagamento: React.FC<ModalPagamentoProps> = ({ show, handleClose, clie
                         <Form.Control
                             type="date"
                             value={dataPagamento}
+                            className="w-100"
                             onChange={(e) => setDataPagamento(e.target.value)}
                         />
                     </Form.Group>
@@ -72,6 +74,7 @@ const ModalPagamento: React.FC<ModalPagamentoProps> = ({ show, handleClose, clie
                             type="text"
                             placeholder="Digite a qual/quais meses esse pagamento é referente"
                             value={referencia}
+                            className="w-100"
                             onChange={(e) => setReferencia(e.target.value)}
                         />
                     </Form.Group>
@@ -80,6 +83,7 @@ const ModalPagamento: React.FC<ModalPagamentoProps> = ({ show, handleClose, clie
                         <Form.Control
                             as="select"
                             value={metodoPagamento}
+                            className="w-100"
                             onChange={(e) => setMetodoPagamento(e.target.value)}
                         >
                             <option value="PIX">PIX</option>

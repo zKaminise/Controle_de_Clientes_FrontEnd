@@ -14,6 +14,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage }) => {
           <img
             src="https://images.vexels.com/media/users/3/252027/isolated/preview/7d8e277792f119b7d5f52dfb0b4ca11c-a-rga-o-de-acidente-vascular-cerebral-humano.png"
             alt="Logo"
+            className="img-fluid"
             style={{ width: '55px', height: '55px', marginRight: '10px' }}
           />
         </Navbar.Brand>

@@ -262,7 +262,7 @@ const Financeiro: React.FC = () => {
         >
           Gerar Relatório
         </Button>
-        <Table striped bordered hover className="mt-4">
+        <Table responsive striped bordered hover className="mt-4">
           <thead>
             <tr>
               <th>Nome</th>
@@ -311,7 +311,7 @@ const Financeiro: React.FC = () => {
             <Modal.Title>Pagamentos de {selectedClient?.nome}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Table striped bordered hover>
+            <Table responsive striped bordered hover className="mt-4">
               <thead>
                 <tr>
                   <th>Valor Pago</th>
